@@ -1,44 +1,52 @@
-<mat-card>
-  <mat-card-title>New Post</mat-card-title>
-  <mat-card-content>
+
+<div class="card">
+  <div class="card-header">New Post</div>
+  <div class="card-body">
     <form [formGroup]="form">
-      <mat-form-field>
-        <input
-          type="text"
-          matInput
-          placeholder="Title"
-          formControlName="title"
-        />
-        <mat-error *ngIf="form.get('title').invalid"
-          >Please enter valid post title</mat-error
-        >
-      </mat-form-field>
-      <div>
-        <button mat-stroked-button type="button" (click)="filePicker.click()">
-          Select Image
-        </button>
-        <input
-          id="filePicker"
-          type="file"
-          #filePicker
-          (change)="onImagePicked($event)"
-        />
-      </div>
-      <div class="imagePreview" *ngIf="imagePreview && imagePreview !== null">
-        <img [src]="imagePreview" [alt]="form.value.title" />
+        <div class="row">
+          <div class="col-sm">
+            <div class="form-group">
+
+              <input class="form-control"
+              type="text"
+              placeholder="Title"
+              formControlName="title"
+              />
+              <div class="alert alert-danger" *ngIf="form.get('title').invalid"
+              >Please enter valid post title</div
+              >
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="form-group">
+
+              <button class="form-control" type="button" (click)="filePicker.click()">
+                Select Image
+              </button>
+              <input
+              id="filePicker"
+              type="file"
+              #filePicker
+              (change)="onImagePicked($event)"
+              />
+            </div>
+          </div>
+          </div>
+          <div class=" form-control imagePreview" *ngIf="imagePreview && imagePreview !== null">
+            <img [src]="imagePreview" [alt]="form.value.title" />
+          </div>
+
+        
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" formControlName="description"></textarea>
+          <div *ngIf="form.get('description').invalid"
+          >Please enter valid post title</div
+          >
       </div>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Description</mat-label>
-        <textarea matInput formControlName="description"></textarea>
-        <mat-error *ngIf="form.get('description').invalid"
-          >Please enter valid post title</mat-error
-        >
-      </mat-form-field>
-
-      <div class="button">
-        <button type="button" mat-button (click)="onSavePost()">Post</button>
-      </div>
+      <button class="btn btn-primary" type="button" mat-button (click)="onSavePost()">Post</button>
     </form>
-  </mat-card-content>
-</mat-card>
+  </div>
+</div>
+

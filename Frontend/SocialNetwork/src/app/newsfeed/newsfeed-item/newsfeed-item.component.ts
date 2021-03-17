@@ -19,11 +19,6 @@ export class NewsfeedItemComponent implements OnInit {
     }
   }
 
-  hasImage(): boolean{
-    // return this.item.content != null;
-    return true;
-  }
-
   getDate(){
     const now = new Date().getTime();
     const difference = now - new Date(this.item['createdAt']).getTime();
@@ -37,6 +32,8 @@ export class NewsfeedItemComponent implements OnInit {
     return Math.round(differenceInSek/(3600 *24)) + " days ago"
   }
 
+  routeToProfile(){
+  }
   
 
 }

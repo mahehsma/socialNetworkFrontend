@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(private http:HttpClient, private router:Router, private authService:AuthService) { }
 
   ngOnInit(): void {
-    if(this.authService.isAuthenticated()){
+    if(this.authService.isAuthenticated){
       this.router.navigate(['/newsfeed']);
     }
   }

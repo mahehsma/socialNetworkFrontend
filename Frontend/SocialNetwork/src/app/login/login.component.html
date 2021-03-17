@@ -1,34 +1,27 @@
-<mat-card>
-  <mat-card-title>Login</mat-card-title>
-  <mat-card-content>
+<div class="card">
+  <div class="card-body">
+    <div class="card-title">
+      <h2>Login</h2>
+    </div>
+    <hr>
     <form>
-      <p>
-        <mat-form-field>
-          <input
-            type="text"
-            matInput
-            placeholder="Username"
-            formControlName="username"
-            (input)="onUpdateUserName($event.target.value)"
-          />
-        </mat-form-field>
-      </p>
-
-      <p>
-        <mat-form-field>
-          <input
-            type="password"
-            matInput
-            placeholder="Password"
-            formControlName="password"
-            (input)="onUpdatePassword($event.target.value)"
-          />
-        </mat-form-field>
-      </p>
-
-      <div class="button">
-        <button type="button" mat-button (click)="onLogin()">Login</button>
-      </div>
-    </form>
-  </mat-card-content>
-</mat-card>
+      <div class="form-group">
+      <label>Username</label><br>
+      <input class="form-control"
+      type="text"
+      formControlName="username"
+      (input)="onUpdateUserName($event.target.value)"
+      />
+    </div>
+    <div class="form-group">
+      <label>Password</label><br>
+      <input class="form-control"
+      type="password"
+      formControlName="password"
+      (input)="onUpdatePassword($event.target.value)"
+      />
+    </div>
+    <button class="btn btn-primary" type="button" (click)="onLogin()">Login</button>
+  </form>
+</div>
+</div>

@@ -1,13 +1,5 @@
-mat-card {
-  background-color: #f9f9f9;
-}
-
-.imageContainer {
-  width: 100%;
-}
-
-.imageContainer img{
-  width: 100%;
+.card-header h4{
+    cursor: pointer;
 }
 
 

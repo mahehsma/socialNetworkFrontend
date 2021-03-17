@@ -5,12 +5,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
-
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
@@ -21,6 +15,7 @@ import { NewsfeedItemComponent } from './newsfeed/newsfeed-item/newsfeed-item.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { AuthInterceptor } from './auth-interceptor';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 const appRoutes: Routes = [
@@ -28,7 +23,7 @@ const appRoutes: Routes = [
   { path: 'newsfeed', canActivate: [AuthGuard],component: NewsfeedComponent}, 
   // { path: 'newsfeed', component: NewsfeedComponent}, 
   { path: 'signup', component: SignupComponent}, 
-  // { path: 'profile'}
+  { path: 'profile', component: UserProfileComponent}
   // { path: 'profile'}
 
 ];
@@ -42,18 +37,14 @@ const appRoutes: Routes = [
     NewsfeedComponent,
     NewPostComponent,
     NewsfeedItemComponent,
-    SignupComponent
+    SignupComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatToolbarModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    MatButtonModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [AuthService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],

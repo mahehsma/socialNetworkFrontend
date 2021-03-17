@@ -1,25 +1,11 @@
-<mat-card>
-  <!-- <mat-card-title>
-    <p>{{ item.title }}</p>
-  </mat-card-title>
-  <mat-card-image *ngIf="hasImage()">
-    <img src="{{ item.image }}" alt="img" />
-  </mat-card-image>
-  <mat-card-content>
-    <p>{{ item.content }}</p>
-  </mat-card-content> -->
-
-  <mat-card-header>
-    <mat-card-title>{{ item.userName }}: {{ item.title }} </mat-card-title>
-    <mat-card-subtitle>{{ getDate() }}</mat-card-subtitle>
-  </mat-card-header>
-  <div class="imageContainer" *ngIf="url">
-    <img [src]="url" alt="img" />
+<div class="card">
+  <div class="card-header" [routerLink]="['/profile']">
+    <h4>{{ item.userName }}</h4>
   </div>
-  <mat-card-content>
-    <h3>{{ item.description }}</h3>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-  </mat-card-actions>
-</mat-card>
+  <img class="card-img" [src]="url" alt="img" *ngIf="url"/>
+  <div class="card-body">
+    <h5 class="card-title">{{ item.title }}</h5>
+    <p class="card-text">{{ item.description }}</p>
+    <p class="card-text"><small class="text-muted">{{ getDate() }}</small></p>
+  </div>
+</div>

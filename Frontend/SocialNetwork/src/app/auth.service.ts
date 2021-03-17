@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 @Injectable({providedIn: "root"})
 export class AuthService {
     private token: string;
-    private authenticated:boolean = false;
+    isAuthenticated:boolean = false;
     private tokenTimer;
 
     constructor(private http: HttpClient, private router:Router){}
@@ -24,7 +24,7 @@ export class AuthService {
                 if(token) {
                     const expiresIn = response['expiresIn'];
                     this.setLogoutTimer(expiresIn*1000);
-                    this.authenticated = true;
+                    this.isAuthenticated = true;
                     const loggedInUntil = new Date().getTime() +expiresIn*1000;
                     this.saveAuthData(this.token, new Date(loggedInUntil))
                     this.router.navigate(['/newsfeed'])
@@ -35,7 +35,7 @@ export class AuthService {
 
     logout() {
         this.token = null;
-        this.authenticated = false;
+        this.isAuthenticated = false;
         this.clearAuthData();
         this.router.navigate(['/']);
         clearTimeout(this.tokenTimer);
@@ -48,7 +48,7 @@ export class AuthService {
             const expiration = authInformation.expirationDate;
             if(now < expiration){
                 this.token = authInformation.token;
-                this.authenticated = true;
+                this.isAuthenticated = true;
                 this.setLogoutTimer(expiration-now)
             }
         }
@@ -58,10 +58,6 @@ export class AuthService {
         this.tokenTimer = setTimeout(()=>{
             this.logout();
         }, timeInMs);
-    }
-
-    isAuthenticated(){
-        return this.authenticated;
     }
 
     private getAuthData(){
