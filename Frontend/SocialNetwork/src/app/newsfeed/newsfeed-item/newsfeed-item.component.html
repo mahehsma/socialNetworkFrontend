@@ -1,0 +1,25 @@
+<mat-card>
+  <!-- <mat-card-title>
+    <p>{{ item.title }}</p>
+  </mat-card-title>
+  <mat-card-image *ngIf="hasImage()">
+    <img src="{{ item.image }}" alt="img" />
+  </mat-card-image>
+  <mat-card-content>
+    <p>{{ item.content }}</p>
+  </mat-card-content> -->
+
+  <mat-card-header>
+    <mat-card-title>{{ item.userName }}: {{ item.title }} </mat-card-title>
+    <mat-card-subtitle>{{ getDate() }}</mat-card-subtitle>
+  </mat-card-header>
+  <div class="imageContainer">
+    <img [src]="url" alt="img" />
+  </div>
+  <mat-card-content>
+    <h3>{{ item.description }}</h3>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+  </mat-card-actions>
+</mat-card>

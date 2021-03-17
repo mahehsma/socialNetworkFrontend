@@ -1,0 +1,9 @@
+mat-toolbar {
+  height: 40px;
+  background-color: teal;
+  color: white;
+  /* position: fixed;
+  top: 0;
+  overflow: hidden; */
+}
+

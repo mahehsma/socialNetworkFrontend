@@ -1,0 +1,17 @@
+mat-card {
+    background-color: #f9f9f9;
+
+}
+
+#filePicker {
+    visibility: hidden;
+}
+
+.imagePreview {
+    height: 5rem;
+    margin: 1rem 0;
+}
+
+.imagePreview img {
+    height: 100%;
+}

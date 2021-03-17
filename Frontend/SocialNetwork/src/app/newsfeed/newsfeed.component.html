@@ -1,0 +1,6 @@
+<div>
+  <app-new-post></app-new-post>
+</div>
+<div *ngFor="let item of newsfeed">
+  <app-newsfeed-item [item]="item"></app-newsfeed-item>
+</div>
