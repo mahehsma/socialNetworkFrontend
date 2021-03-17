@@ -7,11 +7,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NewsfeedItemComponent implements OnInit {
   @Input() item; 
-  url = Math.random() > 0.5 ? "http://localhost:3000/image/Unbenannt.png" : "http://localhost:3000/image/landschaft.jpg"
+  url:string = null;
 
   constructor() { }
 
   ngOnInit(): void {
+    const contentImg = this.item['content'];
+    if(contentImg){
+      console.log(contentImg)
+      this.url = "http://localhost:3000/image/"+contentImg;
+    }
   }
 
   hasImage(): boolean{

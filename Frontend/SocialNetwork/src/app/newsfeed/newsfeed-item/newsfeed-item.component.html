@@ -13,7 +13,7 @@
     <mat-card-title>{{ item.userName }}: {{ item.title }} </mat-card-title>
     <mat-card-subtitle>{{ getDate() }}</mat-card-subtitle>
   </mat-card-header>
-  <div class="imageContainer">
+  <div class="imageContainer" *ngIf="url">
     <img [src]="url" alt="img" />
   </div>
   <mat-card-content>

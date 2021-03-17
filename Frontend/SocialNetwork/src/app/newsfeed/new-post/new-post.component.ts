@@ -18,7 +18,6 @@ export class NewPostComponent implements OnInit {
       title: new FormControl(null, {validators: [Validators.required, Validators.minLength(3)]}),
       content: new FormControl(null),
       description: new FormControl(null),
-      image: new FormControl(null, {validators: [Validators.required]})
     });
   }
 
@@ -26,10 +25,13 @@ export class NewPostComponent implements OnInit {
     if(this.form.invalid) {
       return;
     }
-
+    const postData = new FormData();
+    postData.append("title", this.form.value.title);
+    postData.append("description", this.form.value.description);
+    postData.append("content", this.form.value.content, this.form.value.title);
     const url ="http://localhost:3000/content"
-    const body={title: this.form.value.title, description: this.form.value.description, content: this.form.value.content}
-    this.http.post(url, body).subscribe(result => {
+    // const body={title: this.form.value.title, description: this.form.value.description, content: this.form.value.content}
+    this.http.post(url, postData).subscribe(result => {
       console.log(result)
     });
     this.form.reset();
@@ -37,8 +39,8 @@ export class NewPostComponent implements OnInit {
 
   onImagePicked(event:Event){
     const file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({image: file});
-    this.form.get('image').updateValueAndValidity();
+    this.form.patchValue({content: file});
+    this.form.get('content').updateValueAndValidity();
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreview = reader.result as string;

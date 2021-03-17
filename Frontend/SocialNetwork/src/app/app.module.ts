@@ -14,7 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
-// import { AuthGuard } from './auth-guard.service';
+import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { NewPostComponent } from './newsfeed/new-post/new-post.component';
 import { NewsfeedItemComponent } from './newsfeed/newsfeed-item/newsfeed-item.component';
@@ -25,8 +25,8 @@ import { AuthInterceptor } from './auth-interceptor';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent}, 
-  //{ path: 'newsfeed', canActivate: [AuthGuard],component: NewsfeedComponent}, 
-  { path: 'newsfeed', component: NewsfeedComponent}, 
+  { path: 'newsfeed', canActivate: [AuthGuard],component: NewsfeedComponent}, 
+  // { path: 'newsfeed', component: NewsfeedComponent}, 
   { path: 'signup', component: SignupComponent}, 
   // { path: 'profile'}
   // { path: 'profile'}
@@ -56,7 +56,7 @@ const appRoutes: Routes = [
     MatButtonModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [AuthService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   // providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })

@@ -16,6 +16,9 @@ export class LoginComponent implements OnInit {
   constructor(private http:HttpClient, private router:Router, private authService:AuthService) { }
 
   ngOnInit(): void {
+    if(this.authService.isAuthenticated()){
+      this.router.navigate(['/newsfeed']);
+    }
   }
 
   onUpdateUserName(value:string) {
@@ -27,10 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(){
-   this.authService.login(this.userName, this.password, (response: string) => {
-    if(this.authService.getToken != null)
-      this.router.navigate(['/newsfeed'])
-   });
+   this.authService.login(this.userName, this.password);
   }
 
 }

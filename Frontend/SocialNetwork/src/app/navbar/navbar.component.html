@@ -1,3 +1,4 @@
 <mat-toolbar>
   <span>SocialNetwork</span>
+  <button mat-button (click)="onLogout()" *ngIf="isLoggedIn()">Logout</button>
 </mat-toolbar>
