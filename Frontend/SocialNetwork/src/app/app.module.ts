@@ -21,9 +21,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 const appRoutes: Routes = [
   { path: '', component: LoginComponent}, 
   { path: 'newsfeed', canActivate: [AuthGuard],component: NewsfeedComponent}, 
-  // { path: 'newsfeed', component: NewsfeedComponent}, 
   { path: 'signup', component: SignupComponent}, 
-  { path: 'profile', component: UserProfileComponent}
+  { path: 'profile/:username', component: UserProfileComponent}
   // { path: 'profile'}
 
 ];

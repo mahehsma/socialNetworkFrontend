@@ -1,8 +1,7 @@
 div {
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 50%;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 900px) {
@@ -12,7 +11,7 @@ div {
 }
 
 @media only screen and (max-width: 600px) {
-    div {
-      width: 95%;
-    }
+  div {
+    width: 95%;
   }
+}

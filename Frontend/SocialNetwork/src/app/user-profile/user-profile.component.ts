@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,16 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
   user;
-  constructor(private http:HttpClient) { }
+  tab:number = 1;
+  constructor(private http:HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const url ="http://localhost:3000/users/merdan"
+    console.log("router data")
+    console.log(this.route.params['_value']['username'])
+    const username = this.route.params['_value']['username']
+    const url ="http://localhost:3000/users/"+username
     this.http.get(url).subscribe(response => {
       console.log(response);
       const user = response['user'];
       if(user)
         this.user = user;
     })
+  }
+
+  toggle(num:number){
+    this.tab = num;
   }
 
 }

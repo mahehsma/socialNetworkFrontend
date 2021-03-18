@@ -1,11 +1,13 @@
 <div class="card">
-  <div class="card-header" [routerLink]="['/profile']">
+  <div class="card-header" [routerLink]="['/profile', item.userName]">
     <h4>{{ item.userName }}</h4>
   </div>
-  <img class="card-img" [src]="url" alt="img" *ngIf="url"/>
+  <img class="card-img" [src]="url" alt="img" *ngIf="url" />
   <div class="card-body">
     <h5 class="card-title">{{ item.title }}</h5>
     <p class="card-text">{{ item.description }}</p>
-    <p class="card-text"><small class="text-muted">{{ getDate() }}</small></p>
+    <p class="card-text">
+      <small class="text-muted">{{ getDate() }}</small>
+    </p>
   </div>
 </div>

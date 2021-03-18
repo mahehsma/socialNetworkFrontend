@@ -1,11 +1,62 @@
-<div class="card">
-    <div class="card-body">
-        <div class="media">
-            <img src="{{ user.profilePicture }}" alt="profilePicture" class="m3-3">
-            <div class="media-body">
-                <h5 class="mt-0">{{ user.name }}</h5>
-                <p>{{ user.email }}</p>
-            </div>
-        </div>
+<div *ngIf="user">
+  <div class="media">
+    <img
+      class="rounded-circle mr-3"
+      id="profilePicture"
+      src="{{ user.profilePicture }}"
+      alt="profilePicture"
+      *ngIf="user"
+    />
+    <div class="media-body" *ngIf="user">
+      <h5 class="mt-0">{{ user.name }}</h5>
+      <p>{{ user.email }}</p>
     </div>
+  </div>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <p
+        id="postTab"
+        class="nav-link"
+        [ngClass]="{ active: tab == 1 }"
+        (click)="toggle(1)"
+      >
+        Posts: {{ user.posts.length }}
+      </p>
+    </li>
+    <li class="nav-item">
+      <p
+        id="followingTab"
+        class="nav-link"
+        [ngClass]="{ active: tab == 2 }"
+        (click)="toggle(2)"
+      >
+        Following: {{ user.following.length }}
+      </p>
+    </li>
+    <li class="nav-item">
+      <p
+        id="followerTab"
+        class="nav-link"
+        [ngClass]="{ active: tab === 3 }"
+        (click)="toggle(3)"
+      >
+        Follower: {{ user.follower.length }}
+      </p>
+    </li>
+  </ul>
+  <div *ngIf="tab === 1">
+    <div *ngFor="let item of user.posts">
+      <app-newsfeed-item [item]="item"></app-newsfeed-item>
+    </div>
+  </div>
+  <div *ngIf="tab === 2">
+    <div *ngFor="let item of user.following">
+      <p [item]="item">{{ item.userName }}</p>
+    </div>
+  </div>
+  <div *ngIf="tab === 3">
+    <div *ngFor="let item of user.follower">
+      <p [item]="item">{{ item.name }}</p>
+    </div>
+  </div>
 </div>

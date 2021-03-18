@@ -1,0 +1,9 @@
+.media {
+  margin: 20px 0px;
+}
+
+#profilePicture {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
