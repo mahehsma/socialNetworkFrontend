@@ -30,4 +30,12 @@ export class UserProfileComponent implements OnInit {
     this.tab = num;
   }
 
+  follow(){
+    const username = this.route.params['_value']['username']
+    const url ="http://localhost:3000/follow/"+username
+    this.http.post(url,"").subscribe(response => {
+      console.log(response)
+    })
+  }
+
 }

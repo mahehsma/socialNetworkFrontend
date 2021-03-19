@@ -1,21 +1,29 @@
 <div *ngIf="user">
-  <div class="media">
-    <img
-      class="rounded-circle mr-3"
-      id="profilePicture"
-      src="{{ user.profilePicture }}"
-      alt="profilePicture"
-      *ngIf="user"
-    />
-    <div class="media-body" *ngIf="user">
-      <h5 class="mt-0">{{ user.name }}</h5>
-      <p>{{ user.email }}</p>
+  <div class="row">
+    <div class="col">
+
+      <div class="media">
+        <img
+        class="rounded-circle mr-3"
+        id="profilePicture"
+        src="{{ user.profilePicture }}"
+        alt="profilePicture"
+        *ngIf="user"
+        />
+        <div class="media-body" *ngIf="user">
+          <h5 class="mt-0">{{ user.name }}</h5>
+          <p>{{ user.email }}</p>
+        </div>
+      </div>
     </div>
-  </div>
+    <div class="col align-self-center" *ngIf="user.state != 'owner'">
+      <button id="btn-follow" class="btn btn-primary" (click)="follow()">follow</button>
+    </div>
+</div>
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <p
-        id="postTab"
+      id="postTab"
         class="nav-link"
         [ngClass]="{ active: tab == 1 }"
         (click)="toggle(1)"
@@ -56,7 +64,7 @@
   </div>
   <div *ngIf="tab === 3">
     <div *ngFor="let item of user.follower">
-      <p [item]="item">{{ item.name }}</p>
+      <p [item]="item">{{ item.userName }}</p>
     </div>
   </div>
 </div>
