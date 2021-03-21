@@ -2,12 +2,15 @@
   margin: 20px 0px;
 }
 
-#profilePicture {
+.profilePicture {
   width: 70px;
   height: 70px;
-  border-radius: 50%;
 }
 
 #btn-follow {
   float: right;
+}
+
+.post-overview {
+  margin-top: 10px;
 }

@@ -1,5 +1,10 @@
 <div class="media">
-  <img class="mr-3" [src]="url" [alt]="post.title" *ngIf="post.content" />
+  <img
+    class="align-self-center mr-3"
+    [src]="url"
+    [alt]="post.title"
+    *ngIf="post.content"
+  />
   <div class="media-body">
     <h5 class="mt-0">{{ post.title }}</h5>
     {{ post.description }}
