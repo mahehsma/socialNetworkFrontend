@@ -4,12 +4,10 @@
 }
 
 .img-container {
-  height: 80vh;
-  width: 100%;
 }
 .card-img {
   display: block;
-  max-height: 100%;
-  width: auto;
+  max-width: 100%;
+  height: auto;
   margin: auto;
 }
