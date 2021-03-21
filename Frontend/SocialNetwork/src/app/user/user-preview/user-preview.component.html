@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="media" [routerLink]="['/profile', user.name]">
+      <img
+        class="rounded-circle mr-3"
+        id="profilePicture"
+        src="{{ user.profilePicture }}"
+        alt="profilePicture"
+        *ngIf="user"
+      />
+      <div class="media-body">
+        <h5>{{ user.name }}</h5>
+      </div>
+    </div>
+  </div>
+</div>

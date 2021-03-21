@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-newsfeed',
@@ -11,7 +10,7 @@ import { AuthService } from '../auth.service';
 export class NewsfeedComponent implements OnInit {
   newsfeed = [];
 
-  constructor(private http:HttpClient, private authService: AuthService ) { }
+  constructor(private http:HttpClient ) { }
 
   ngOnInit(): void {
     this.onLoadNewsfeed();

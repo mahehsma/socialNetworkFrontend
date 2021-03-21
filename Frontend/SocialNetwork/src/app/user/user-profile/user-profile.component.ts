@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { element } from 'protractor';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../user-interface';
 
 @Component({
   selector: 'app-user-profile',
@@ -9,13 +9,12 @@ import { element } from 'protractor';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  user;
+  user: User;
   tab:number = 1;
-  constructor(private http:HttpClient, private route: ActivatedRoute) { }
+  constructor(private http:HttpClient, private route: ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
-    console.log("router data")
-    console.log(this.route.params['_value']['username'])
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false; //for reloading component
     const username = this.route.params['_value']['username']
     const url ="http://localhost:3000/users/"+username
     this.http.get(url).subscribe(response => {

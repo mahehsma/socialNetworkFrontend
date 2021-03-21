@@ -1,14 +1,13 @@
 <div *ngIf="user">
   <div class="row">
     <div class="col">
-
       <div class="media">
         <img
-        class="rounded-circle mr-3"
-        id="profilePicture"
-        src="{{ user.profilePicture }}"
-        alt="profilePicture"
-        *ngIf="user"
+          class="rounded-circle mr-3"
+          id="profilePicture"
+          src="{{ user.profilePicture }}"
+          alt="profilePicture"
+          *ngIf="user"
         />
         <div class="media-body" *ngIf="user">
           <h5 class="mt-0">{{ user.name }}</h5>
@@ -17,13 +16,15 @@
       </div>
     </div>
     <div class="col align-self-center" *ngIf="user.state != 'owner'">
-      <button id="btn-follow" class="btn btn-primary" (click)="follow()">follow</button>
+      <button id="btn-follow" class="btn btn-primary" (click)="follow()">
+        follow
+      </button>
     </div>
-</div>
+  </div>
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <p
-      id="postTab"
+        id="postTab"
         class="nav-link"
         [ngClass]="{ active: tab == 1 }"
         (click)="toggle(1)"
@@ -53,18 +54,19 @@
     </li>
   </ul>
   <div *ngIf="tab === 1">
-    <div *ngFor="let item of user.posts">
-      <app-newsfeed-item [item]="item"></app-newsfeed-item>
+    <div *ngFor="let post of user.posts">
+      <app-post-preview [post]="post"></app-post-preview>
+      <hr />
     </div>
   </div>
   <div *ngIf="tab === 2">
-    <div *ngFor="let item of user.following">
-      <p [item]="item">{{ item.userName }}</p>
+    <div *ngFor="let user of user.following">
+      <app-user-preview [user]="user"></app-user-preview>
     </div>
   </div>
   <div *ngIf="tab === 3">
-    <div *ngFor="let item of user.follower">
-      <p [item]="item">{{ item.userName }}</p>
+    <div *ngFor="let user of user.follower">
+      <app-user-preview [user]="user"></app-user-preview>
     </div>
   </div>
 </div>

@@ -4,18 +4,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './auth/login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
-import { AuthGuard } from './auth-guard.service';
-import { AuthService } from './auth.service';
+import { AuthGuard } from './auth/auth-guard.service';
+import { AuthService } from './auth/auth.service';
 import { NewPostComponent } from './newsfeed/new-post/new-post.component';
 import { NewsfeedItemComponent } from './newsfeed/newsfeed-item/newsfeed-item.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SignupComponent } from './signup/signup.component';
-import { AuthInterceptor } from './auth-interceptor';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { AuthInterceptor } from './auth/auth-interceptor';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { UserPreviewComponent } from './user/user-preview/user-preview.component';
+import { PostPreviewComponent } from './post-preview/post-preview.component';
 
 
 const appRoutes: Routes = [
@@ -37,7 +39,9 @@ const appRoutes: Routes = [
     NewPostComponent,
     NewsfeedItemComponent,
     SignupComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UserPreviewComponent,
+    PostPreviewComponent
   ],
   imports: [
     BrowserModule,

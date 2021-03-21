@@ -54,7 +54,7 @@ export class AuthService {
         }
     }
 
-    setLogoutTimer(timeInMs){
+    setLogoutTimer(timeInMs: number){
         this.tokenTimer = setTimeout(()=>{
             this.logout();
         }, timeInMs);

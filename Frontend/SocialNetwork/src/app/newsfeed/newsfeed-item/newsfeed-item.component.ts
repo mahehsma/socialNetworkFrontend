@@ -6,13 +6,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./newsfeed-item.component.css']
 })
 export class NewsfeedItemComponent implements OnInit {
-  @Input() item; 
+  @Input() user; 
   url:string = null;
 
   constructor() { }
 
   ngOnInit(): void {
-    const contentImg = this.item['content'];
+    const contentImg = this.user.post['content'];
     if(contentImg){
       console.log(contentImg)
       this.url = "http://localhost:3000/image/"+contentImg;
@@ -21,7 +21,7 @@ export class NewsfeedItemComponent implements OnInit {
 
   getDate(){
     const now = new Date().getTime();
-    const difference = now - new Date(this.item['createdAt']).getTime();
+    const difference = now - new Date(this.user.post['createdAt']).getTime();
     const differenceInSek = difference / 1000;
     if(differenceInSek < 60)
       return "a few seconds ago";
