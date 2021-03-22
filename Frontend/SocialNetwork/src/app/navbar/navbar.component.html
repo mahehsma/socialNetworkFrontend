@@ -1,4 +1,10 @@
 <nav class="navbar sticky-top navbar-dark bg-dark">
   <span class="navbar-brand" [routerLink]="['/newsfeed']">SocialNetwork</span>
-  <button class="btn btn-danger" (click)="onLogout()" *ngIf="isLoggedIn()">Logout</button>
+  <button
+    class="btn btn-danger"
+    (click)="onLogout()"
+    *ngIf="this.authService.isAuthenticated"
+  >
+    Logout
+  </button>
 </nav>

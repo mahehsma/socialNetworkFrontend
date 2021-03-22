@@ -3,7 +3,7 @@
     <app-user-preview [user]="user"></app-user-preview>
   </div>
   <div class="img-container" *ngIf="url">
-    <img class="card-img" [src]="url" alt="img" />
+    <img class="card-img img-fluid" [src]="url" alt="img" />
   </div>
   <div class="card-body">
     <h5 class="card-title">{{ user.post.title }}</h5>
